@@ -1,1 +1,44 @@
-<h1>Add New Product</h1>
+<h1>New Product</h1>
+
+<%= form_with(model: @product, local: true) do |form| %>
+  <div>
+    <%= form.label :name, "Product Name" %>
+    <%= form.text_field :name, placeholder: "Enter product name" %>
+  </div>
+
+  <div>
+    <%= form.label :price, "Price (in $)" %>
+    <%= form.number_field :price, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :stock, "Stock Quantity" %>
+    <%= form.number_field :stock %>
+  </div>
+
+  <div>
+    <%= form.label :description, "Product Description" %>
+    <%= form.text_area :description, placeholder: "Enter product details" %>
+  </div>
+
+  <div>
+    <%= form.check_box :available %>
+    <%= form.label :available, "Available?" %>
+  </div>
+
+  <div>
+    <%= form.label :category, "Category" %>
+    <%= form.select :category, ["Electronics", "Clothing", "Books", "Accessories"], prompt: "Select a category" %>
+  </div>
+
+  <div>
+    <%= form.check_box :accept_terms %>
+    <%= form.label :accept_terms, "Accept Terms & Conditions" %>
+  </div>
+
+  <div>
+    <%= form.submit "Save Product" %>
+  </div>
+
+<% end %>
+
