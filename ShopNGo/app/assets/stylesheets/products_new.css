@@ -48,7 +48,7 @@ input[type="checkbox"] {
 .checkbox-container {
   display: flex;
   align-items: center;
-  gap: 5px; /* Adjust spacing between checkbox and label */
+  gap: 5px; 
 }
 .checkbox-container input {
   width: auto;
