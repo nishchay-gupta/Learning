@@ -1,0 +1,22 @@
+<h1>Employees</h1>
+<%= link_to "Create New Employee", new_employee_path %>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Gender</th>
+    <th>Active</th>
+  </tr>
+  <% @employees.each do |employee| %>
+    <tr>
+      <td><%= employee.id %></td>
+      <td><%= employee.name %></td>
+      <td><%= employee.address %></td>
+      <td><%= employee.gender %></td>
+      <td><%= employee.active %></td>
+    </tr>
+  <% end %>
+</table>
+<%= stylesheet_link_tag 'employee', "data-turbo-track": "reload"  %>

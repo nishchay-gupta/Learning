@@ -1,0 +1,24 @@
+form {
+  width: 300px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.field_with_errors {
+  display: contents; 
+}
