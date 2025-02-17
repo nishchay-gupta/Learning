@@ -22,3 +22,7 @@ th, td {
 .field_with_errors {
   display: contents; 
 }
+
+.text-red {
+  color: red;
+}
