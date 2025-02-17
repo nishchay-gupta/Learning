@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    puts params
     
     if params[:product][:accept_terms] == "1"
       if @product.save
@@ -27,7 +28,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :stock, :description, :available, :category, :accept_terms)
+    params.require(:product).permit(:name, :price, :stock, :description, :available, :category, :accept_terms, :search, :range, :date, :time, :datetime, :password, :file, :website, :email, :color)
   end
   
 end

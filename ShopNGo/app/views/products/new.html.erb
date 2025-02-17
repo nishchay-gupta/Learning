@@ -1,51 +1,92 @@
 <h1>New Product</h1>
 
 <%= form_with(model: @product, local: true) do |form| %>
+  
   <div>
     <%= form.label :name, "Product Name" %>
-    <%= form.text_field :name, placeholder: "Enter product name" %>
+    <%= form.text_field :name, placeholder: "Enter product name" %>     <!-- Text Field -->
   </div>
 
   <div>
     <%= form.label :price, "Price (in $)" %>
-    <%= form.number_field :price, step: 0.01 %>
-  </div>
-
-  <div>
-    <%= form.label :stock, "Stock Quantity" %>
-    <%= form.number_field :stock %>
+    <%= form.number_field :price, step: 0.01 %>     <!-- Number Field -->
   </div>
 
   <div>
     <%= form.label :description, "Product Description" %>
-    <%= form.text_area :description, placeholder: "Enter product details" %>
-  </div>
-
-  <div class="checkbox-container">
-    <%= form.check_box :available %>
-    <%= form.label :available, "Available?" %>
+    <%= form.text_area :description, placeholder: "Enter product details" %>     <!-- Textarea -->
   </div>
 
   <div>
     <%= form.label :category, "Category" %>
-    <%= form.select :category, ["Electronics", "Clothing", "Books", "Accessories"], prompt: "Select a category" %>
-  </div>
-
-  <div class="checkbox-container">
-    <%= form.check_box :accept_terms %>
-    <%= form.label :accept_terms, "Accept Terms & Conditions" %>
+    <%= form.select :category, ["Electronics", "Clothing", "Books", "Accessories"], prompt: "Select a category" %>     <!-- Select Dropdown -->
   </div>
 
   <div>
-    <%= form.submit "Save Product" %>
+    <%= form.label :color, "Choose Color" %><br>
+    <%= form.radio_button :color, "Red" %> Red
+    <%= form.radio_button :color, "Blue" %> Blue
+    <%= form.radio_button :color, "Green" %> Green     <!-- Radio Buttons -->
+  </div>
+
+  <div>
+    <%= form.check_box :accept_terms %>
+    <%= form.label :accept_terms, "Accept Terms & Conditions" %>  <!-- Checkboxes -->
+  </div>
+
+  <div>
+    <%= form.label :email, "Email Address" %>
+    <%= form.email_field :email, placeholder: "Enter your email" %>     <!-- Email Field -->
+
+  <div>
+    <%= form.label :website, "Website URL" %>
+    <%= form.url_field :website, placeholder: "https://example.com" %>     <!-- URL Field -->
+  </div>
+
+  <div>
+    <%= form.label :search, "Search Products" %>
+    <%= form.search_field :search, placeholder: "Search for a product" %>    <!-- Search Field -->
+  </div>
+
+  <div>
+    <%= form.label :range, "Select Quantity" %>
+    <%= form.range_field :range, min: 1, max: 100, value: 50 %>      <!-- Range Slider -->
+  </div>
+
+  <div>
+    <%= form.label :date, "Select Date" %>
+    <%= form.date_field :date %>         <!-- Date Picker -->
+  </div>
+
+  <div>
+    <%= form.label :time, "Select Time" %>
+    <%= form.time_field :time %>       <!-- Time Picker -->
+  </div>
+
+  <div>
+    <%= form.label :datetime, "Select Date & Time" %>
+    <%= form.datetime_field :datetime %>      <!-- DateTime Picker -->
+  </div>
+
+  <div>
+    <%= form.label :password, "Enter Password" %>
+    <%= form.password_field :password, placeholder: "********" %>      <!-- Password Field -->
+  </div>
+
+  <div>
+    <%= form.label :file, "Upload File" %>
+    <%= form.file_field :file %>       <!-- File Upload -->
+  </div>
+
+  <div>
+    <%= form.submit "Save Product" %>      <!-- Submit Button -->
   </div>
 
 <% end %>
 
 <% if flash[:alert] %>
-  <p class="error"><%= flash[:alert] %></p>
+  <p style="color: red;"><%= flash[:alert] %></p>
 <% end %>
 
-
 <%= link_to "Back to Products", products_path %>
-<%= stylesheet_link_tag 'products_new' %>
+
