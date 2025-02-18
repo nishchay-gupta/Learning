@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "employees#new"
+
   resources :employees
+  patch 'employees/:id/toggle_active', to: 'employees#toggle_active', as: :toggle_active_employee  
+  
 end

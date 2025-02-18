@@ -1,22 +1,46 @@
-<h1>Employees</h1>
-<%= link_to "Create New Employee", new_employee_path %>
+<h1 class="page-title">Employees</h1>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Gender</th>
-    <th>Active</th>
-  </tr>
-  <% @employees.each do |employee| %>
+<%= link_to "Create New Employee", new_employee_path, class: "create-link" %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <button class="close-btn-success" onclick="this.parentElement.style.display='none';">&times;</button>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <button class="close-btn-danger" onclick="this.parentElement.style.display='none';">&times;</button>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<table class="table">
+  <thead>
     <tr>
-      <td><%= employee.id %></td>
-      <td><%= employee.name %></td>
-      <td><%= employee.address %></td>
-      <td><%= employee.gender %></td>
-      <td><%= employee.active %></td>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Gender</th>
+      <th>Department</th>
+      <th>Active</th>
+      <th>Action</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.id %></td>
+        <td><%= employee.name %></td>
+        <td><%= employee.address %></td>
+        <td><%= employee.gender %></td>
+        <td><%= employee.department.name %></td>
+        <td><%= employee.active ? "Yes" : "No" %></td>
+        <td>
+          <%= button_to (employee.active ? "Deactivate" : "Activate"), toggle_active_employee_path(employee), method: :patch, class: "button-toggle", data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-<%= stylesheet_link_tag 'employee', "data-turbo-track": "reload"  %>

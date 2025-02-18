@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   layout "employee"
+
   def new
     @employee = Employee.new
   end
@@ -17,6 +18,13 @@ class EmployeesController < ApplicationController
   
   def index
     @employees = Employee.all
+  end
+
+  def toggle_active
+    employee = Employee.find(params[:id])
+    employee.update(active: !employee.active)
+    flash[:notice] = employee.active ? "Employee activated successfully!" : "Employee deactivated successfully!"
+    redirect_to employees_path
   end
 
   private
