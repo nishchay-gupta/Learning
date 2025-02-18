@@ -4,14 +4,12 @@
 
 <% if flash[:notice] %>
   <div class="alert alert-success">
-    <button class="close-btn-success" onclick="this.parentElement.style.display='none';">&times;</button>
     <%= flash[:notice] %>
   </div>
 <% end %>
 
 <% if flash[:alert] %>
   <div class="alert alert-danger">
-    <button class="close-btn-danger" onclick="this.parentElement.style.display='none';">&times;</button>
     <%= flash[:alert] %>
   </div>
 <% end %>
