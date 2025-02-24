@@ -6,8 +6,8 @@
       <%= form.label :name, "Name:", class: "form-label" %>
       <%= form.text_field :name, class: "form-input" %>
 
-      <%= form.label :name_confirmation, "Confirm Name" %>
-      <%= form.text_field :name_confirmation %>
+      <%= form.label :name_confirmation, "Confirm Name" , class: "form-label" %>
+      <%= form.text_field :name_confirmation , class: "form-input" %>
     </div>
 
     <div class="form-field">
@@ -17,6 +17,11 @@
       <%= form.radio_button :gender, "Female", class: "radio-group" %>
       <%= form.label :gender_female, "Female", class: "form-label" %>
     </div><br/>
+
+    <div class="form-field">
+      <%= form.label :age, "Age:", class: "form-label" %>
+      <%= form.number_field :age, class: "form-input" %>  
+    </div>
 
     <div class="form-field">
       <%= form.label :address, "Address:", class: "form-label" %>
