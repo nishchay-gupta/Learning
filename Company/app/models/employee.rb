@@ -18,8 +18,14 @@ class Employee < ApplicationRecord
   # validates :age, comparison: { greater_than: 18 }
   validates :age, comparison: { greater_than_or_equal_to: 18 }
   # validates :age, comparison: { less_than: 50 }
-  validates :age, comparison: { less_than_or_equal_to: 50 }
+  # validates :age, comparison: { less_than_or_equal_to: 50 }
   # validates :age, comparison: { equal_to: 18 }
-  validates :age, comparison: { other_than: 21 }
+  # validates :age, comparison: { other_than: 21 }
+
+# LENGTH 
+  # validates :name, length: {minimum: 3}
+  # validates :name, length: { maximum: 5 }
+  validates :name, length: { in: 6..20 }
+  # validates :name, length: { is: 6 }
 end
 
