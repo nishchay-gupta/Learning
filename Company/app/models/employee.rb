@@ -16,7 +16,7 @@ class Employee < ApplicationRecord
 
 # COMPARISON VALIDATIONS
   # validates :age, comparison: { greater_than: 18 }
-  validates :age, comparison: { greater_than_or_equal_to: 18 }
+  # validates :age, comparison: { greater_than_or_equal_to: 18 }
   # validates :age, comparison: { less_than: 50 }
   # validates :age, comparison: { less_than_or_equal_to: 50 }
   # validates :age, comparison: { equal_to: 18 }
@@ -27,5 +27,10 @@ class Employee < ApplicationRecord
   # validates :name, length: { maximum: 5 }
   validates :name, length: { in: 6..20 }
   # validates :name, length: { is: 6 }
+
+# NUMERICALITY
+  # validates :age, numericality: true
+  validates :age, numericality: { only_integer: true, in: 18..50 , odd: true }
+  # validates :age, numericality: { greater_than: 18, less_than_or_equal_to: 50 }
 end
 
