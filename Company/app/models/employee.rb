@@ -32,5 +32,19 @@ class Employee < ApplicationRecord
   # validates :age, numericality: true
   validates :age, numericality: { only_integer: true, in: 18..50 , odd: true }
   # validates :age, numericality: { greater_than: 18, less_than_or_equal_to: 50 }
+
+# FORMAT
+  validates_format_of :address, with: /\A[^0-9]+\z/  #no numbers allowed
+  # validates_format_of :address, without: /\A[a-zA-Z]+\z/  #no letters allowed
+
+# UNIQUENESS
+  # validates :name, uniqueness: true
+
+# INCLUSION
+  # validates :gender, inclusion: { in: %w(male female) }
+  # validates :gender, inclusion: { in: %w(male) , message: "%{value} is not a valid gender" }
+
+# PRESENCE
+  # validates :name, presence: true
 end
 
