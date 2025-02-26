@@ -1,6 +1,8 @@
 class Employee < ApplicationRecord
   belongs_to :department
   attr_accessor :accept_terms
+  after_create -> { Rails.logger.info("New employee created!") }
+  before_validation :ensure_age_has_value
   
   # validates :name, :gender, :address, :department_id, presence: true
 
@@ -30,7 +32,7 @@ class Employee < ApplicationRecord
 
 # NUMERICALITY
   # validates :age, numericality: true
-  validates :age, numericality: { only_integer: true, in: 18..50 , odd: true }
+  validates :age, numericality: { only_integer: true, in: 18..50 , odd: true } ,  if: -> { age.present? }
   # validates :age, numericality: { greater_than: 18, less_than_or_equal_to: 50 }
 
 # FORMAT
@@ -46,5 +48,14 @@ class Employee < ApplicationRecord
 
 # PRESENCE
   # validates :name, presence: true
+
+private
+
+  def ensure_age_has_value
+    if age.blank?
+      self.age = 23
+    end
+  end
+
 end
 
