@@ -22,6 +22,7 @@
       <th>Address</th>
       <th>Gender</th>
       <th>Department</th>
+      <th>Age</th>
       <th>Active</th>
       <th>Action</th>
     </tr>
@@ -34,6 +35,7 @@
         <td><%= employee.address %></td>
         <td><%= employee.gender %></td>
         <td><%= employee.department.name %></td>
+        <td><%= employee.age %></td>
         <td><%= employee.active ? "Yes" : "No" %></td>
         <td>
           <%= button_to (employee.active ? "Deactivate" : "Activate"), toggle_active_employee_path(employee), method: :patch, class: "button-toggle", data: { confirm: "Are you sure?" } %>

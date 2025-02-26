@@ -2,9 +2,17 @@ class Employee < ApplicationRecord
   belongs_to :department
   attr_accessor :accept_terms
   after_create -> { Rails.logger.info("New employee created!") }
-  before_validation :ensure_age_has_value
+  # before_validation :ensure_age_has_value
+
+  before_validation do
+    self.age = 23 if age.blank?     #macro-style class methods
+  end
+
+  before_validation ->(emp) { emp.age = 21 if emp.age.blank? }     #using proc
   
-  # validates :name, :gender, :address, :department_id, presence: true
+
+
+# validates :name, :gender, :address, :department_id, presence: true
 
 # ACCEPTANCE VALIDATIONS
   # validates :accept_terms, presence: true
@@ -49,13 +57,13 @@ class Employee < ApplicationRecord
 # PRESENCE
   # validates :name, presence: true
 
-private
+# private
 
-  def ensure_age_has_value
-    if age.blank?
-      self.age = 23
-    end
-  end
+#   def ensure_age_has_value
+#     if age.blank?
+#       self.age = 23
+#     end
+#   end
 
 end
 
