@@ -4,12 +4,24 @@ class Employee < ApplicationRecord
   after_create -> { Rails.logger.info("New employee created!") }
   # before_validation :ensure_age_has_value
 
-  before_validation do
-    self.age = 23 if age.blank?     #macro-style class methods
+  # before_validation do
+  #   self.age = 23 if age.blank?     #macro-style class methods
+  # end
+
+  # before_validation ->(emp) { emp.age = 21 if emp.age.blank? }     #using proc
+
+  # before_validation :ensure_age_has_value, on: :create
+  
+  before_validation :age_value
+  after_validation :age_value_error
+
+  def age_value
+    puts "Age: #{age}"
   end
 
-  before_validation ->(emp) { emp.age = 21 if emp.age.blank? }     #using proc
-  
+  def age_value_error
+    puts "Age errors: #{errors[:age]}" 
+  end
 
 
 # validates :name, :gender, :address, :department_id, presence: true
