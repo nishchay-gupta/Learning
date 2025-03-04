@@ -15,6 +15,9 @@ class Employee < ApplicationRecord
   before_validation :age_value
   after_validation :age_value_error
 
+  after_create :message1
+  after_update :message2
+
   def age_value
     puts "Age: #{age}"
   end
@@ -76,6 +79,16 @@ class Employee < ApplicationRecord
 #       self.age = 23
 #     end
 #   end
+
+def message1
+  Rails.logger.info("Employee was created sucessfully")
+end
+
+def message2
+  if saved_change_to_email?
+    Rails.logger.info("Notification sent to admin about critical info update for: #{email}")
+  end
+end
 
 end
 
